@@ -1,0 +1,22 @@
+/*
+'Pasta with tomato and spinach'
+counter: 0 / 'Pasta' / counter: 5 / newTitle = ['Pasta']
+counter: 5 / 'with' / counter : 9 / newTitle = ['Pasta with']
+counter : 9 / 'tomato' / counter: 15 / newTitle = ['Pasta with tomato']
+counter : 15 / 'and' / counter: 18 / newTitle = ['Pasta with tomato']
+counter: 18 / 'spinach' / counter : 15 / newTitle = ['Pasta with tomato']
+*/
+
+const abbreviateTitle = (title, limit = 17) => {
+    const newTitle = [];
+    if(title.length > limit){
+        title.split(' ').reduce((counter, current) => {
+            if(counter +  current.length <= limit){
+                newTitle.push(current);
+            }
+            return counter + current.length;
+        }, 0);
+        return `${newTitle.join(' ')} ...`;
+    }
+    return title;
+};
